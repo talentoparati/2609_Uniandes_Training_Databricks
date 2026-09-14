@@ -7,7 +7,7 @@ Demo práctico del curso, construido como secuencia continua sobre un único cas
 Cada sesión lee y transforma las tablas que dejó la sesión anterior — no son demos aislados. El dataset sintético (clientes, productos, sesiones web, eventos de carrito, transacciones) se genera una sola vez en `00_Setup` y acompaña las 16 sesiones hasta el modelo de Machine Learning final.
 
 **Dos reglas de diseño se aplican en los 19 archivos:**
-1. **Guía paso a paso real:** toda celda de código está precedida por una celda markdown "ANTES DE EJECUTAR ESTA CELDA" con tres campos — **QUÉ HACE**, **PARA QUÉ** y **CÓMO LO HACE** — nunca una celda de código queda sin explicar. Verificable con `node tools/audit_explanations.js`.
+1. **Guía paso a paso real:** toda celda de código está precedida por una celda markdown "ANTES DE EJECUTAR ESTA CELDA" con tres campos — **QUÉ HACE**, **PARA QUÉ** y **CÓMO LO HACE** — nunca una celda de código queda sin explicar.
 2. **100% Databricks Free Edition:** solo Compute Serverless, Unity Catalog por defecto, 1 SQL Warehouse 2X-Small y Jobs con hasta 5 tasks concurrentes por cuenta — los límites reales de la capa gratuita. Ninguna celda requiere una feature de pago. La sintaxis está alineada a la documentación oficial vigente (por ejemplo, Lakeflow Declarative Pipelines usa `from pyspark import pipelines as dp`, no el módulo `dlt` heredado).
 
 ## Antes de la Sesión 1
@@ -50,22 +50,6 @@ Modulo_3_Almacenamiento_DeltaLake/     <- incluye 08b_Pipeline_DLT_Definicion.py
 Modulo_4_Gobernanza_UnityCatalog/
 Modulo_5_Ingenieria_Datos/             <- incluye 12b_Pipeline_Medallion_BronzeSilverGold.py (recurso Pipeline)
 Modulo_6_Machine_Learning/
-tools/                                 <- generador Node.js de los notebooks (no forma parte del contenido del curso)
 ```
 
 Los archivos `*b_...py` (`08b`, `12b`) son **recursos de tipo Pipeline** (Lakeflow Declarative Pipelines) — no se ejecutan con `%run`, se despliegan desde `Workflows > Lakeflow Declarative Pipelines > Create Pipeline` apuntando a ese archivo como source code.
-
-## Regenerar los notebooks
-
-El contenido de cada notebook se genera con Node.js a partir de `tools/build_*.js` (uno por módulo) y componentes compartidos en `tools/ui.js` / `tools/nbgen.js`. Para regenerar después de editar un script:
-
-```bash
-node tools/build_00_configuracion.js
-node tools/build_00_setup.js
-node tools/build_modulo1.js
-node tools/build_modulo2.js
-node tools/build_modulo3.js
-node tools/build_modulo4.js
-node tools/build_modulo5.js
-node tools/build_modulo6.js
-```
