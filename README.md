@@ -1,3 +1,5 @@
+<img src="assets/logo.png" alt="Talento Para TI" width="280">
+
 # Databricks para Ingeniería y Analítica de Datos — Uniandes
 
 Demo práctico del curso, construido como secuencia continua sobre un único caso de negocio:
