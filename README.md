@@ -1,10 +1,16 @@
-<img src="assets/logo.png" alt="Talento Para TI" width="280">
+<div align="center">
+
+<img src="assets/logo.png" alt="Talento Para TI" width="320"><br/><br/>
 
 # Databricks para Ingeniería y Analítica de Datos — Uniandes
 
-Demo práctico del curso, construido como secuencia continua sobre un único caso de negocio:
+**E-commerce: abandono de carrito y detección de fraude**
 
-> **E-commerce: abandono de carrito y detección de fraude.**
+</div>
+
+---
+
+Demo práctico del curso, construido como secuencia continua sobre un único caso de negocio.
 
 Cada sesión lee y transforma las tablas que dejó la sesión anterior — no son demos aislados. El dataset sintético (clientes, productos, sesiones web, eventos de carrito, transacciones) se genera una sola vez en `00_Setup` y acompaña las 16 sesiones hasta el modelo de Machine Learning final.
 
