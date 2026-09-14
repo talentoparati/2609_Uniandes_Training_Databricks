@@ -14,7 +14,7 @@ Cada sesión lee y transforma las tablas que dejó la sesión anterior — no so
 
 Todos los **widgets y parámetros de configuración del curso viven en `00_Setup`** — ningún notebook de sesión declara sus propios widgets; todos heredan las variables con `%run ../00_Setup/00_Configuracion`.
 
-1. Abrir `00_Setup/00_Configuracion.py`, revisar/ajustar los widgets (catalog, entorno, volúmenes de datos sintéticos) y ejecutarlo una vez.
+1. Abrir `00_Setup/00_Configuracion.ipynb`, revisar/ajustar los widgets (catalog, entorno, volúmenes de datos sintéticos) y ejecutarlo una vez.
 2. Ejecutar `00_Setup/01_Generacion_Datos_Sinteticos.ipynb` — crea el catalog, los 3 schemas Medallion (`bronze`/`silver`/`gold`), un Volume para Auto Loader, y las 5 tablas Bronze.
 3. A partir de ahí, seguir el orden de carpetas/notebooks de la tabla siguiente. Cada notebook indica su prerequisito en el encabezado.
 
@@ -22,7 +22,7 @@ Todos los **widgets y parámetros de configuración del curso viven en `00_Setup
 
 | Semana | Sesión | Notebook | Tema |
 |---|---|---|---|
-| — | Setup | `00_Setup/00_Configuracion.py` + `01_Generacion_Datos_Sinteticos.ipynb` | Widgets, catalog, schemas Medallion, datos sintéticos |
+| — | Setup | `00_Setup/00_Configuracion.ipynb` + `01_Generacion_Datos_Sinteticos.ipynb` | Widgets, catalog, schemas Medallion, datos sintéticos |
 | 1 | 1 | `Modulo_1_Fundamentos_Databricks/01_Bienvenida_Arquitectura_Lakehouse.ipynb` | Lakehouse vs Data Warehouse/Data Lake, workspace, Compute Serverless |
 | 1 | 2 | `Modulo_1_Fundamentos_Databricks/02_Entorno_UnityCatalog_GitFolders.ipynb` | Magics, Catalog Explorer, namespace UC, Git folders |
 | 2 | 3 | `Modulo_2_Procesamiento_Spark/03_Transformacion_DataFrame_SparkSQL.ipynb` | DataFrame API vs Spark SQL, primera capa Silver |
@@ -60,6 +60,7 @@ Los archivos `*b_...py` (`08b`, `12b`) son **recursos de tipo Pipeline** (Lakefl
 El contenido de cada notebook se genera con Node.js a partir de `tools/build_*.js` (uno por módulo) y componentes compartidos en `tools/ui.js` / `tools/nbgen.js`. Para regenerar después de editar un script:
 
 ```bash
+node tools/build_00_configuracion.js
 node tools/build_00_setup.js
 node tools/build_modulo1.js
 node tools/build_modulo2.js
